@@ -1,8 +1,15 @@
-package model;
-import java.time.LocalDate;
-public class JobApplication {
+package com.dragos.jobtracker.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    long id;
+import java.time.LocalDate;
+@Entity
+ public class JobApplication {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     String companyName;
     String position;
     LocalDate applicationDate;
@@ -43,7 +50,7 @@ public class JobApplication {
     {
         return applicationDate;
     }
-    String status()
+    String getStatus()
     {
         return status;
     }
