@@ -14,50 +14,53 @@ import java.time.LocalDate;
     String position;
     LocalDate applicationDate;
     String status;
-    void setId(long new_id)
+    public void setId(long new_id)
     {
         id=new_id;
     }
-    void setCompanyName(String new_companyName)
+    public void setCompanyName(String new_companyName)
     {
         companyName=new_companyName;
     }
-    void setPosition(String new_setPosition)
+    public void setPosition(String new_setPosition)
     {
         position=new_setPosition;
     }
-    void setApplicationDate(LocalDate new_applicationDate) {
+    public void setApplicationDate(LocalDate new_applicationDate) {
         applicationDate = new_applicationDate;
     }
-    void setStatus(String new_status)
+    public void setStatus(String new_status)
     {
         status=new_status;
     }
 
-    long getId()
+    public long getId()
     {
         return id;
     }
-    String getCompanyName()
+    public String getCompanyName()
     {
         return companyName;
     }
-    String getPosition()
+    public String getPosition()
     {
         return position;
     }
-    LocalDate getApplicationDate()
+    public LocalDate getApplicationDate()
     {
         return applicationDate;
     }
-    String getStatus()
+    public String getStatus()
     {
         return status;
     }
-    void compactSentence()
+    public void compactSentence()
     {
         System.out.print("Applied at the company:"+companyName+" for the postion:"+position+" at the date:" +
                 applicationDate+" with the status:"+status);
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
