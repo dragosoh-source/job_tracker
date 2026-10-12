@@ -9,14 +9,13 @@ import java.time.LocalDate;
  public class JobApplication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String companyName;
-    String position;
-    LocalDate applicationDate;
-    String status;
-    public void setId(long new_id)
-    {
-        id=new_id;
+    private Long id;
+    private String companyName;
+    private String position;
+    private LocalDate applicationDate;
+    private String status;
+    public void setId(Long id) {
+        this.id = id;
     }
     public void setCompanyName(String new_companyName)
     {
@@ -34,7 +33,7 @@ import java.time.LocalDate;
         status=new_status;
     }
 
-    public long getId()
+    public Long getId()
     {
         return id;
     }
@@ -56,11 +55,9 @@ import java.time.LocalDate;
     }
     public void compactSentence()
     {
-        System.out.print("Applied at the company:"+companyName+" for the postion:"+position+" at the date:" +
+        System.out.print("Applied at the company:"+companyName+" for the position:"+position+" at the date:" +
                 applicationDate+" with the status:"+status);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 }
