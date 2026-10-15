@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Tracker</title>
+</head>
+<body>
+<h1>My Job Applications</h1>
+<table border="1">
+    <tr>
+        <th>Company</th>
+        <th>Position</th>
+        <th>Application Date</th>
+        <th>Status</th>
+    </tr>
+    <tr th:each="a : ${applications}">
+        <td th:text="${a.companyName}"></td>
+        <td th:text="${a.position}"></td>
+        <td th:text="${a.applicationDate}"></td>
+        <td th:text="${a.status}"></td>
+    </tr>
+</table>
+</body>
+</html>
