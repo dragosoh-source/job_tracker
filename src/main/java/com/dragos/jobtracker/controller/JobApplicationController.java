@@ -1,4 +1,5 @@
 package com.dragos.jobtracker.controller;
+import com.dragos.jobtracker.model.JobApplication;
 import org.springframework.ui.Model;
 
 import com.dragos.jobtracker.service.JobApplicationService;
@@ -17,5 +18,12 @@ public class JobApplicationController {
     {
         model.addAttribute("applications",service.getAll());
         return "applications";
+    }
+
+    @GetMapping("/applications/new")
+    public String showCreateForm(Model model)
+    {
+        model.addAttribute("application",new JobApplication());
+        return "application-form";
     }
 }

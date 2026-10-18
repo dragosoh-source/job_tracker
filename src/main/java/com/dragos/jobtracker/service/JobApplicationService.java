@@ -36,5 +36,6 @@ public class JobApplicationService {
         }
         repository.deleteById(id);
     }
+    
 }
 
