@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Job Tracker</title>
+</head>
+
+<body>
+<h1>My Application</h1>
+
+<form th:action="${jobApplication.id == null} ? @{/applications} : @{/applications/{id}/update(id=${jobApplication.id})}"
+      th:object="${jobApplication}" method="post">
+    <p>
+        <label for="companyName">Company</label>
+        <input type="text" id="companyName" th:field="*{companyName}">
+    </p>
+
+    <p>
+        <label for="position">Position</label>
+        <input type="text" id="position" th:field="*{position}">
+    </p>
+
+    <p>
+        <label for="applicationDate">Application Date</label>
+        <input type="date" id="applicationDate" th:field="*{applicationDate}">
+    </p>
+
+    <p>
+        <label for="status">Status</label>
+        <input type="text" id="status" th:field="*{status}">
+    </p>
+
+    <button type="submit">Save</button>
+</form>
+
+<p><a th:href="@{/applications}">Back to the list</a></p>
+</body>
+</html>

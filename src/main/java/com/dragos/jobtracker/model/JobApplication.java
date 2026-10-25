@@ -3,6 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 @Entity
@@ -12,7 +13,7 @@ import java.time.LocalDate;
     private Long id;
     private String companyName;
     private String position;
-    private LocalDate applicationDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) private LocalDate applicationDate;
     private String status;
     public void setId(Long id) {
         this.id = id;
@@ -58,6 +59,7 @@ import java.time.LocalDate;
         System.out.print("Applied at the company:"+companyName+" for the position:"+position+" at the date:" +
                 applicationDate+" with the status:"+status);
     }
+
 
 
 }

@@ -6,6 +6,7 @@ import com.dragos.jobtracker.service.JobApplicationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -25,7 +26,7 @@ public class JobApplicationController {
     @GetMapping("/applications/new")
     public String showCreateForm(Model model)
     {
-        model.addAttribute("application",new JobApplication());
+        model.addAttribute("jobApplication",new JobApplication());
         return "application-form";
     }
     @PostMapping("/applications")
@@ -34,6 +35,24 @@ public class JobApplicationController {
         service.save(model);
         return "redirect:/applications";
     }
-
+    @PostMapping("/applications/{id}/delete")
+    public String deleteApplication(@PathVariable Long id)
+    {
+        service.delete(id);
+        return "redirect:/applications";
+    }
+    @GetMapping("/applications/{id}/edit")
+    public String showEditForm(@PathVariable Long id, Model model)
+    {
+                model.addAttribute("jobApplication",service.getById(id));
+                return "application-form";
+    }
+    @PostMapping("/applications/{id}/update")
+    public String updateApplication(@PathVariable Long id,@ModelAttribute JobApplication application)
+    {
+        application.setId(id);
+        service.save(application);
+        return "redirect:/applications";
+    }
 
 }
