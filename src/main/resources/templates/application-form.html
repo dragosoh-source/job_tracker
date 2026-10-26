@@ -31,7 +31,9 @@
 
     <p>
         <label for="status">Status</label>
-        <input type="text" id="status" th:field="*{status}">
+        <select id="status" th:field="*{status}">
+            <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
+        </select>
     </p>
 
     <button type="submit">Save</button>

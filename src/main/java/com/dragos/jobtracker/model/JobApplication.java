@@ -1,24 +1,32 @@
 package com.dragos.jobtracker.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+
+import static jakarta.persistence.EnumType.STRING;
+
 @Entity
  public class JobApplication {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     private String companyName;
+
     @NotBlank
     private String position;
-    @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) private LocalDate applicationDate;
-    private String status;
+
+    @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate applicationDate;
+
+    @Enumerated(EnumType.STRING)
+    private ApplicationStatus status;
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -33,7 +41,7 @@ import java.time.LocalDate;
     public void setApplicationDate(LocalDate new_applicationDate) {
         applicationDate = new_applicationDate;
     }
-    public void setStatus(String new_status)
+    public void setStatus(ApplicationStatus new_status)
     {
         status=new_status;
     }
@@ -54,7 +62,7 @@ import java.time.LocalDate;
     {
         return applicationDate;
     }
-    public String getStatus()
+    public ApplicationStatus getStatus()
     {
         return status;
     }

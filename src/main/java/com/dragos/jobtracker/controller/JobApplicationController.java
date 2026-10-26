@@ -1,4 +1,5 @@
 package com.dragos.jobtracker.controller;
+import com.dragos.jobtracker.model.ApplicationStatus;
 import com.dragos.jobtracker.model.JobApplication;
 import jakarta.validation.Valid;
 import org.springframework.ui.Model;
@@ -69,6 +70,12 @@ public class JobApplicationController {
         }
         service.save(jobApplication);
         return "redirect:/applications";
+    }
+
+    @ModelAttribute("statuses")
+    public ApplicationStatus[] statuses()
+    {
+        return ApplicationStatus.values();
     }
 
 }
