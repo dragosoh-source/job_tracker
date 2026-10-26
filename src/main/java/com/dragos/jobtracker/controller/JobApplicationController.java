@@ -1,13 +1,16 @@
 package com.dragos.jobtracker.controller;
 import com.dragos.jobtracker.model.JobApplication;
+import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 
 import com.dragos.jobtracker.service.JobApplicationService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import java.util.NoSuchElementException;
 
 @Controller
 public class JobApplicationController {
@@ -30,15 +33,23 @@ public class JobApplicationController {
         return "application-form";
     }
     @PostMapping("/applications")
-    public String saveForm(@ModelAttribute JobApplication model)
+    public String saveForm(@Valid @ModelAttribute JobApplication jobApplication, BindingResult result)
     {
-        service.save(model);
+        if(result.hasErrors())
+        {
+            return "application-form";
+        }
+        service.save(jobApplication);
         return "redirect:/applications";
     }
     @PostMapping("/applications/{id}/delete")
     public String deleteApplication(@PathVariable Long id)
     {
-        service.delete(id);
+        try {
+            service.delete(id);
+        }catch (NoSuchElementException e) {
+
+        }
         return "redirect:/applications";
     }
     @GetMapping("/applications/{id}/edit")
@@ -48,10 +59,15 @@ public class JobApplicationController {
                 return "application-form";
     }
     @PostMapping("/applications/{id}/update")
-    public String updateApplication(@PathVariable Long id,@ModelAttribute JobApplication application)
+    public String updateApplication(@PathVariable Long id,@Valid @ModelAttribute JobApplication jobApplication,BindingResult result)
     {
-        application.setId(id);
-        service.save(application);
+
+        jobApplication.setId(id);
+        if(result.hasErrors())
+        {
+            return "application-form";
+        }
+        service.save(jobApplication);
         return "redirect:/applications";
     }
 

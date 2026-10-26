@@ -4,6 +4,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.springframework.format.annotation.DateTimeFormat;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 @Entity
@@ -11,9 +13,11 @@ import java.time.LocalDate;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String companyName;
+    @NotBlank
     private String position;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) private LocalDate applicationDate;
+    @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) private LocalDate applicationDate;
     private String status;
     public void setId(Long id) {
         this.id = id;

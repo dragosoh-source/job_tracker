@@ -14,16 +14,19 @@
     <p>
         <label for="companyName">Company</label>
         <input type="text" id="companyName" th:field="*{companyName}">
+        <small style="color:red" th:if="${#fields.hasErrors('companyName')}" th:errors="*{companyName}"></small>
     </p>
 
     <p>
         <label for="position">Position</label>
         <input type="text" id="position" th:field="*{position}">
+        <small style="color:red" th:if="${#fields.hasErrors('position')}" th:errors="*{position}"></small>
     </p>
 
     <p>
         <label for="applicationDate">Application Date</label>
         <input type="date" id="applicationDate" th:field="*{applicationDate}">
+        <small style="color:red" th:if="${#fields.hasErrors('applicationDate')}" th:errors="*{applicationDate}"></small>
     </p>
 
     <p>
