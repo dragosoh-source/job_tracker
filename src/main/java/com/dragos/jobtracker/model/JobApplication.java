@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
-import static jakarta.persistence.EnumType.STRING;
+
 
 @Entity
  public class JobApplication {
@@ -65,11 +65,6 @@ import static jakarta.persistence.EnumType.STRING;
     public ApplicationStatus getStatus()
     {
         return status;
-    }
-    public void compactSentence()
-    {
-        System.out.print("Applied at the company:"+companyName+" for the position:"+position+" at the date:" +
-                applicationDate+" with the status:"+status);
     }
 
 

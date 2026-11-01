@@ -22,10 +22,8 @@
         <td th:text="${a.status}"></td>
         <td>
             <a th:href="@{/applications/{id}/edit(id=${a.id})}">
-                <button type="submit">Edit</button>
+                <button type="button">Edit</button>
             </a>
-        </td>
-        <td>
             <form th:action="@{/applications/{id}/delete(id=${a.id})}" method="post">
                     <button type="submit">Delete</button>
             </form>
