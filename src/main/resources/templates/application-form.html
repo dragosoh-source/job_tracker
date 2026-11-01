@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<h1>My Application</h1>
+<h1 th:text="${jobApplication.id == null} ? 'New Application' : 'Edit Application'">My Application</h1>
 
 <form th:action="${jobApplication.id == null} ? @{/applications} : @{/applications/{id}/update(id=${jobApplication.id})}"
       th:object="${jobApplication}" method="post">

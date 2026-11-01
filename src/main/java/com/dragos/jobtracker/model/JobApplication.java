@@ -15,13 +15,13 @@ import java.time.LocalDate;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message="Company is required")
     private String companyName;
 
-    @NotBlank
+    @NotBlank(message ="Position is required")
     private String position;
 
-    @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @NotNull(message ="Date is required") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate applicationDate;
 
     @Enumerated(EnumType.STRING)
