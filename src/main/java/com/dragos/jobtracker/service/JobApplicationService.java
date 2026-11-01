@@ -1,5 +1,6 @@
 package com.dragos.jobtracker.service;
 
+import com.dragos.jobtracker.model.ApplicationStatus;
 import com.dragos.jobtracker.model.JobApplication;
 import com.dragos.jobtracker.repository.JobApplicationRepository;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,11 @@ public class JobApplicationService {
         }
         repository.deleteById(id);
     }
-    
+    public List<JobApplication>getByStatus(ApplicationStatus status)
+    {
+
+
+        return repository.findByStatus(status);
+    }
 }
 

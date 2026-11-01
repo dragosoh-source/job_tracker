@@ -7,6 +7,17 @@
 <body>
 <h1>My Job Applications</h1>
 <a th:href="@{/applications/new}"><button type="button">Add Application</button></a>
+<form th:action="@{/applications}" method="get">
+    <label for="status">Filter by status:</label>
+    <select name="status" id="status">
+        <option value="">All</option>
+        <option th:each="s : ${statuses}"
+                th:value="${s}"
+                th:text="${s}"
+                th:selected="${s == selectedStatus}"></option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
 <table border="1">
     <tr>
         <th>Company</th>

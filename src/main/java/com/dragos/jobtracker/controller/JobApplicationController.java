@@ -7,10 +7,8 @@ import org.springframework.ui.Model;
 import com.dragos.jobtracker.service.JobApplicationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.NoSuchElementException;
 
 @Controller
@@ -20,12 +18,7 @@ public class JobApplicationController {
     public JobApplicationController(JobApplicationService service) {
         this.service = service;
     }
-    @GetMapping("/applications")
-    public String list(Model model)
-    {
-        model.addAttribute("applications",service.getAll());
-        return "applications";
-    }
+
 
     @GetMapping("/applications/new")
     public String showCreateForm(Model model)
@@ -78,4 +71,18 @@ public class JobApplicationController {
         return ApplicationStatus.values();
     }
 
+    @GetMapping("/applications")
+    public String list(@RequestParam(required = false) ApplicationStatus status,Model model)
+    {
+        if(status==null)
+        {
+            model.addAttribute("applications", service.getAll());
+        }
+        else
+        {
+            model.addAttribute("applications", service.getByStatus(status));
+        }
+        model.addAttribute("selectedStatus",status);
+        return "applications";
+    }
 }
