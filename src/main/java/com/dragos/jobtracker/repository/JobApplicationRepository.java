@@ -8,9 +8,3 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface JobApplicationRepository extends JpaRepository<JobApplication,Long> {
 }
-public List<JobApplication> findbyStatus(ApplicationStatus status)
-{
-    try {
-        service.findbyId
-    }
-}
